@@ -1,20 +1,63 @@
-# Implementar um servidor de registro
+# <center> Implementar um Registry local</center>
 
 
-Esta página contém informações sobre como hospedar seu próprio registro usando o Docker Registry de código aberto. Para obter informações sobre o Docker Hub, 
-que oferece um registro hospedado com recursos adicionais, como equipes, organizações, web hooks, compilações automatizadas, etc., consulte Docker Hub .
+### Introdução
 
 
-Antes de implantar um registro, você precisa instalar o Docker no host. Um registro é uma instância da registry imagem e é executado no Docker.
+Esta página foi elaborada com informações básicas sobre como você pode manter seus **Containers** usando o Docker Distribution em seu ambiente local.
 
 
-Este tópico fornece informações básicas sobre como implementar e configurar um registro. Para obter uma lista completa de opções de configuração, consulte a referência de configuração .
-
-Se você tiver um datacenter air-gap, consulte Considerações para registros air-gap .
+O [Docker Distribuition](https://github.com/distribution/distribution) é um *registry* repositório de imagens Docker local que serve para guardar e compartilhar as suas imagens. 
 
 
-Referências:
-https://docs.docker.com/registry/deploying/
+### Aviso
+
+
+Esta é uma sugestão de uma configuração inicial para o Registry local e em máquinas de testes ou desenvolvimento. Não implemente um servidor de registro em produção sem proteção por TLS e um mecanismo de controle de acesso.
+
+
+### Pré-requisitos:    
+
+
+    - Você precisa ter o Docker instalado em sua máquina local.
+
+
+### Criar o Registry Local
+
+
+Para que possamos ter o Docker Distribuition de forma simples e funcional, guardando e distribuindo nossas imagens Docker localmente, basta rodá-lo como um *container*, execute o seguinte comando:
+
+
+<img align = 'left' src="img/docker-registry.png " alt="Comando Docker para criar um container registry">
+
+<!-- #region -->
+```python
+$ docker container run -d -p 5000:5000 --restart=always --name registry registry:2
+```
+<!-- #endregion -->
+
+**Resultado da execução**
+
+
+<img align = 'left' src="img/resultado-1.png " alt="Resposta do comando">
+
+
+continua...
+
+
+**Referências:**
+
+1. [Docker](https://www.docker.com/get-started)
+2. [Docker Registry](https://docs.docker.com/registry/deploying/)
+3. Descomplicando o Docker 2a edição<br>
+   Jeferson Fernando Noronha Vitalino<br>
+   Marcus André Nunes Castro
+
+
+
+```python
+
+```
 
 ```python
 
