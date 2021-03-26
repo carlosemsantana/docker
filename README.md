@@ -30,17 +30,23 @@ Para que possamos ter o Docker Distribuition de forma simples e funcional, guard
 
 <img align = 'left' src="img/docker-registry.png " alt="Comando Docker para criar um container registry">
 
+<p>
+
 <!-- #region -->
 ```python
 $ docker container run -d -p 5000:5000 --restart=always --name registry registry:2
 ```
 <!-- #endregion -->
 
+<p>
+
 **Resultado da execução**
 
+<p>
 
 <img align = 'left' src="img/resultado-1.png " alt="Resposta do comando">
 
+<p>
 
 continua...
 
