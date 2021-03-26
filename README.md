@@ -28,7 +28,13 @@ Esta é uma sugestão de uma configuração inicial para o Registry local e em m
 Para que possamos ter o Docker Distribuition de forma simples e funcional, guardando e distribuindo nossas imagens Docker localmente, basta rodá-lo como um *container*, execute o seguinte comando:
 
 
+<p>
+
+
 <img align = 'left' src="img/docker-registry.png " alt="Comando Docker para criar um container registry">
+
+<p>
+
 
 <p>
 
@@ -37,6 +43,9 @@ Para que possamos ter o Docker Distribuition de forma simples e funcional, guard
 $ docker container run -d -p 5000:5000 --restart=always --name registry registry:2
 ```
 <!-- #endregion -->
+
+<p>
+
 
 <p>
 
