@@ -18,7 +18,7 @@ Esta é uma sugestão de uma configuração inicial para o Registry local e em m
 
 ### Pré-requisitos:    
 
-
+    - Máquina com sistema operacional Linux.
     - Você precisa ter o Docker instalado em sua máquina local.
 
 
@@ -28,15 +28,7 @@ Esta é uma sugestão de uma configuração inicial para o Registry local e em m
 Para que possamos ter o Docker Distribuition de forma simples e funcional, guardando e distribuindo nossas imagens Docker localmente, basta rodá-lo como um *container*, execute o seguinte comando:
 
 
-<p>
-
-
-<img align = 'left' src="img/docker-registry.png " alt="Comando Docker para criar um container registry">
-
-<p>
-
-
-<p>
+![](img/docker-registry.png)
 
 <!-- #region -->
 ```python
@@ -44,20 +36,52 @@ $ docker container run -d -p 5000:5000 --restart=always --name registry registry
 ```
 <!-- #endregion -->
 
-<p>
-
-
-<p>
-
 **Resultado da execução**
 
-<p>
 
-<img align = 'left' src="img/resultado-1.png " alt="Resposta do comando">
+![](img/resultado-1.png)
 
-<p>
 
-continua...
+O container ID **50086bf481e753e39f8098487594cf85827d040af41f5c989fccffbc8dc0d782** foi criado com sucesso!
+
+
+Você pode verificar se o container "registry" está em execução, através de um dos comandos abaixo:
+
+<!-- #region -->
+```python
+$ docker container ls 
+
+$ docker container ps 
+
+$ docker ps
+
+```
+<!-- #endregion -->
+
+![](img/docker-container-ls.png)
+
+
+![](img/docker-container-ps.png)
+
+
+![](img/docker-ps.png)
+
+
+O *container* foi criado e está em execução. Agora vamos testá-lo realizando a submissão de uma imagem de teste no repositório.
+
+
+Quando você criar um *container* registry, uma estrutura de diretórios será construída em sua máquina local onde  todas as imagens enviadas serão organizadas. Para descobrir a localização do repositório, observe o comando abaixo:
+
+
+**Lembrando que:**  O repositório será montado no sitema de arquivos Linux somente se o *container* registry estiver em execução (rodando)
+
+<!-- #region -->
+```python
+$ df -h
+```
+<!-- #endregion -->
+
+![](img/df-h.png)
 
 
 **Referências:**
@@ -69,11 +93,3 @@ continua...
    Marcus André Nunes Castro
 
 
-
-```python
-
-```
-
-```python
-
-```
