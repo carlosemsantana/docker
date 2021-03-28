@@ -225,7 +225,7 @@ Caso, você esteja pensando em implementar um servidor Registry em produção, e
 
 
 
-Sou muito grato pela sua atenção. Espero ter contribuido com o seu desenvolvimento de alguma forma.
+Espero ter contribuido com o seu desenvolvimento de alguma forma.
 
 
 <!-- #region -->
