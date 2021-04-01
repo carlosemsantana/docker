@@ -4,28 +4,28 @@
 ### Resumo
 
 
-Esta página foi elaborada com informações básicas sobre como você pode manter seus **Containers** usando o Docker Distribution em seu ambiente local.
+Esta página foi elaborada, com informações básicas sobre como você pode manter seus **Containers** usando o Docker Distribution em seu ambiente local.
 
 
-O [Docker Distribuition](https://github.com/distribution/distribution) é um *registry* repositório de imagens Docker local que serve para guardar e compartilhar as suas imagens. 
+O [Docker Distribuition](https://github.com/distribution/distribution), é um *registry* repositório de imagens Docker local, serve para guardar e compartilhar as suas imagens. 
 
 
 ### Aviso
 
 
-Esta é uma sugestão de uma configuração inicial para o Registry local e em máquinas de testes ou desenvolvimento. Não implemente um servidor de registro em produção sem proteção por TLS e um mecanismo de controle de acesso.
+Esta é uma sugestão de uma configuração inicial para o Registry local, para máquinas de testes. Não implemente um servidor de registro em produção, sem proteção por TLS e um mecanismo de controle de acesso.
 
 
 ### Pré-requisitos:    
 
-    - Máquina com sistema operacional Linux.
-    - Você precisa ter o Docker instalado em sua máquina local.
+    - Máquina com sistema operacional Linux;
+    - Você precisa ter o Docker instalado em sua máquina local;
 
 
 ### Criar o Registry Local
 
 
-Para que possamos ter o Docker Distribuition de forma simples e funcional, guardando e distribuindo nossas imagens Docker localmente, basta rodá-lo como um *container*, execute o seguinte comando:
+Para que possamos ter o Docker Distribuition, de forma simples e funcional, guardando e distribuindo nossas imagens Docker localmente, basta rodá-lo como um *container*, execute o seguinte comando:
 
 
 ![](img/docker-registry.png)
@@ -45,7 +45,7 @@ $ docker container run -d -p 5000:5000 --restart=always --name registry registry
 O container ID **50086bf481e753e39f8098487594cf85827d040af41f5c989fccffbc8dc0d782** foi criado com sucesso!
 
 
-Você pode verificar se o container "registry" está em execução, através de um dos comandos abaixo:
+Você pode verificar se o container *registry* está em execução, através de um dos comandos abaixo:
 
 <!-- #region -->
 ```python
@@ -78,10 +78,10 @@ $ docker ps
 O *container* foi criado e está em execução. Agora vamos testá-lo realizando a submissão de uma imagem de teste no repositório.
 
 
-Quando você criar um *container* registry, uma estrutura de diretórios será construída em sua máquina local onde  todas as imagens enviadas serão organizadas. Para descobrir a localização do repositório, observe o comando abaixo:
+Quando você criar um *container* registry, uma estrutura de diretórios será construída em sua máquina local, onde  todas as imagens enviadas serão organizadas. Para descobrir a localização do repositório, observe o comando abaixo:
 
 
-**Lembrando que:**  O repositório será montado no sitema de arquivos Linux somente se o *container* registry estiver em execução (rodando)
+**Lembrando que:**  O repositório será montado, no sitema de arquivos Linux, somente se o *container* registry estiver em execução (rodando).
 
 <!-- #region -->
 ```python
@@ -95,7 +95,7 @@ $ df -h
 ### Testar o Registry Local
 
 
-1) Baixe uma imagem [Docker Hub](https://hub.docker.com/_/centos) usando o comando abaixo:
+1) Baixe uma imagem [Docker Hub](https://hub.docker.com/_/centos), usando o comando abaixo:
 
 <!-- #region -->
 ```python
@@ -119,7 +119,7 @@ $ docker image ls
 ![](img/docker-image-ls.png)
 
 
-3) Vamos preparar a imagem **centos** ID 300e315adb2f para envio ao repositório "registry" local. Teremos que adicionar uma nova TAG apontando para o endereço do registry. Para isso, vamos utilizar o comando "docker tag".
+3) Vamos preparar a imagem **centos** ID 300e315adb2f, para envio ao repositório "registry" local. Teremos que adicionar uma nova TAG, apontando para o endereço do registry. Para isso, vamos utilizar o comando "docker tag".
 
 <!-- #region -->
 ```python
@@ -131,7 +131,7 @@ $ docker tag 300e315adb2f localhost:5000/centos
 ![](img/docker-tag-id.png)
 
 
-4) A imagem ```localhost:5000/centos``` está pronta para enviarmos para o repositório. Antes e por curiosidade, vamos ver a estrutura de arquivos do repositório e o espaço inical em disco ocupado. 
+4) A imagem ```localhost:5000/centos``` está pronta para enviarmos para o repositório. 
 
 
 ![](img/du-sh.png)
@@ -168,7 +168,7 @@ $ docker push localhost:5000/centos
 **Feito! a imagem foi arquivada no repositório local.***
 
 
-Vamos testar a recuperação ou distribuição da imagem via repositório criado. Para isto, vamos apagar do cache a imagem do CentOS que baixamos e a imagem que foi preparada.
+Testaremos a recuperação ou distribuição da imagem via repositório criado. Para isto, apagaremos do cache a imagem do CentOS que baixamos, e a imagem que foi preparada.
 
 <!-- #region -->
 ```python
@@ -197,7 +197,7 @@ $ docker image ls
 ![](img/docker-image-ls-1.png)
 
 
-Agora que apagamos as imagens do cache, para finalizamos o teste, vamos baixar a imagem do CentOS que está no repositório local.
+Baixe a imagem do CentOS que está no repositório local.
 
 <!-- #region -->
 ```python 
@@ -215,15 +215,16 @@ $ docker image ls
 
 ![](img/docker-image-ls-teste.png)
 
-
+<!-- #region -->
 ***Pronto! a imagem foi baixada do repositório local.***
 
-Eu uso o Docker Distribuition em ambiente de desenvolvimento e acadêmico fora da Internet para centralizar, organizar e compartilhar as imagens dos projetos os quais estamos trabalhando com o restante das equipes. E, as imagens mais importantes sempre faço um backup externo. (O que eu recomendo)
 
-Caso, você esteja pensando em implementar um servidor Registry em produção, eu sugiro uma leitura complementar em [Docker Registry](https://docs.docker.com/registry/deploying/) para a implementação de regras adicionais de segurança. 
+Usamos o Docker Distribuition, em ambiente de desenvolvimento e acadêmico fora da Internet, para centralizar, organizar e compartilhar, as imagens dos projetos os quais estamos trabalhando, com o restante das equipes. E, as imagens mais importantes, sempre fazemos um backup externo. (O que recomendo)
+
+Caso, você esteja pensando em implementar um servidor Registry em produção, eu sugiro leitura complementar em [Docker Registry](https://docs.docker.com/registry/deploying/), para a implementação de regras adicionais de segurança. 
 
 
-
+<!-- #endregion -->
 
 Espero ter contribuido com o seu desenvolvimento de alguma forma.
 
@@ -248,7 +249,3 @@ Espero ter contribuido com o seu desenvolvimento de alguma forma.
    Marcus André Nunes Castro
 
 
-
-```python
-
-```
